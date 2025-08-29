@@ -1,0 +1,210 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+:root {
+  /* --- CONSOLIDATED COLOR & THEME SYSTEM (OKLCH) --- */
+  --radius: 0.625rem;
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  --primary: oklch(0.205 0 0);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.97 0 0);
+  --secondary-foreground: oklch(0.205 0 0);
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.556 0 0);
+  --accent: oklch(0.97 0 0);
+  --accent-foreground: oklch(0.205 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.922 0 0);
+  --input: oklch(0.922 0 0);
+  --ring: oklch(0.708 0 0);
+
+  /* --- MOUSE & GRADIENT ACCENT COLORS --- */
+  --mouse-x: 50%;
+  --mouse-y: 50%;
+  --color-accent-glow: rgba(233, 225, 225, 0.627);
+  --color-accent-dark-blue: rgba(56, 66, 103, 0.713);
+  --color-accent-muted-green: rgba(118, 131, 122, 0.5);
+  --color-accent-earthy-brown: rgba(106, 70, 19, 0.434);
+  --color-backdrop-blur: rgba(18, 18, 18, 0.7);
+}
+
+/* --- GLOBAL BODY STYLE --- */
+/* The body now has a simple, solid background. */
+body {
+  background-color: oklch(0.145 0 0); /* Uses the dark theme's background color */
+  color: var(--foreground);
+  width: 100%;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+@layer base {
+  /* --- REUSABLE DYNAMIC BACKGROUND --- */
+  /* Apply this class to any section that needs the interactive gradient effect. */
+  .dynamic-background {
+    position: relative;
+    z-index: 1;
+    background-color: oklch(0.269 0 0);
+    background-image:
+      radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+        var(--color-accent-glow),
+        transparent 100%),
+      radial-gradient(circle at 30% 30%,
+        var(--color-accent-dark-blue),
+        transparent 50%),
+      radial-gradient(circle at 70% 40%,
+        var(--color-accent-muted-green),
+        transparent 60%),
+      radial-gradient(circle at 50% 70%,
+        var(--color-accent-earthy-brown),
+        transparent 70%);
+    background-blend-mode: lighten;
+     background-attachment: fixed;
+  }
+
+  /* --- STRUCTURAL & LAYOUT CLASSES --- */
+
+  .hero {
+    @apply h-screen w-full relative overflow-hidden;
+    /* This class is now for structure, not background. */
+  }
+  
+  .story-section {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  /* Use this for any section that needs a solid background. */
+  .content-section {
+    background-color: var(--background);
+  }
+
+  .achievements-section {
+    position: relative;
+    z-index: 10;
+    /* This now uses a theme variable for its background. */
+    background-color: var(--card);
+  }
+
+  /* --- COMPONENT & UI STYLES --- */
+
+  .achievement-card {
+    background: var(--card);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border);
+    overflow: hidden;
+    cursor: pointer;
+    transform: scale(1);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+  }
+
+  .achievement-card:hover {
+    transform: scale(1.05) translateY(-5px);
+    box-shadow: 0 25px 50px -12px rgba(0,0,0, 0.25);
+  }
+
+  .card-title { color: var(--card-foreground); }
+  .card-issuer { color: var(--muted-foreground); }
+
+  .modal-backdrop {
+    position: fixed;
+    inset: 0;
+    background: var(--color-backdrop-blur);
+    backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+  }
+
+  .modal-content {
+    background: var(--card);
+    border-radius: var(--radius-lg);
+    width: 90%;
+    max-width: 800px;
+    height: 80vh;
+  }
+  
+  .modal-title { color: var(--foreground); }
+  .modal-issuer { color: var(--muted-foreground); }
+
+  /* --- ANIMATION-SPECIFIC STYLES --- */
+
+  .mask-wrapper {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    mask-image: radial-gradient(circle, black 100%, transparent 0%);
+    mask-size: 0% 0%;
+    mask-position: 50% 50%;
+  }
+
+  .story-track {
+    height: 100%;
+    width: 400%; /* For horizontal scroll */
+    display: flex;
+  }
+  
+  .story-item {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+}
+
+/* --- THEME DEFINITIONS --- */
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+}
+
+.dark {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.205 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.205 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.922 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.556 0 0);
+}
