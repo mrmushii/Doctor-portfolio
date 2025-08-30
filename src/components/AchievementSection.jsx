@@ -1,4 +1,6 @@
 "use client";
+import ReactDOM from "react-dom"; // add this at the top with your imports
+
 
 import React, { useRef, useState, useEffect } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -252,34 +254,37 @@ export default function StoryAnimation() {
       </div>
 
       {/* Modal */}
-      {selectedCard && (
-        <div
-          ref={modalRef}
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-md"
+      {selectedCard &&
+  ReactDOM.createPortal(
+    <div
+      ref={modalRef}
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-md"
+      onClick={handleCloseModal}
+    >
+      <div
+        className="relative w-11/12 max-w-3xl overflow-hidden rounded-xl bg-gray-900 text-white shadow-2xl"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <button
           onClick={handleCloseModal}
+          className="absolute right-4 top-4 z-10 text-gray-400 hover:text-white"
         >
-          <div
-            className="relative w-11/12 max-w-3xl overflow-hidden rounded-xl bg-gray-900 text-white shadow-2xl"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <button
-              onClick={handleCloseModal}
-              className="absolute right-4 top-4 z-10 text-gray-400 hover:text-white"
-            >
-              <X size={24} />
-            </button>
-            <img
-              src={selectedCard.imgSrc}
-              alt={selectedCard.title}
-              className="h-72 w-full object-cover"
-            />
-            <div className="p-8">
-              <h2 className="mb-2 text-3xl font-bold">{selectedCard.title}</h2>
-              <p className="text-lg text-gray-300">{selectedCard.details}</p>
-            </div>
-          </div>
+          <X size={24} />
+        </button>
+        <img
+          src={selectedCard.imgSrc}
+          alt={selectedCard.title}
+          className="h-72 w-full object-cover"
+        />
+        <div className="p-8">
+          <h2 className="mb-2 text-3xl font-bold">{selectedCard.title}</h2>
+          <p className="text-lg text-gray-300">{selectedCard.details}</p>
         </div>
-      )}
+      </div>
+    </div>,
+    document.body
+  )}
+
     </>
   );
 }
