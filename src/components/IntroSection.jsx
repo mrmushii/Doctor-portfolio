@@ -35,7 +35,7 @@ const IntroSection = () => {
       <div className="hero overflow-hidden">
         <div className="video relative z-0 h-screen w-screen">
           <h1 className="dna text-8xl text-center text-white absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-            Dr Shaila Akter Reme
+            John Cena
           </h1>
         </div>
       </div>
