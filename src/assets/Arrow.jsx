@@ -1,0 +1,28 @@
+// src/assets/Arrow.jsx
+import React from "react";
+
+const Arrow = (props) => (
+  <svg
+    {...props}
+    width="400"
+    height="120"
+    viewBox="0 0 400 120"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    {/* Main curved line */}
+    <path
+      className="arrow-path"
+      d="M20,60 
+         C120,10 280,110 380,60 
+         M380,60 L350,35 
+         M380,60 L350,85"
+      stroke="currentColor"
+      strokeWidth="4"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+);
+
+export default Arrow;
