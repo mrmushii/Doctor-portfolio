@@ -4,6 +4,7 @@ import Footer from "./components/Footer";
 import IntroSection from "./components/IntroSection";
 import MouseFollowGradient from "./components/MouseFollowGradient";
 import ResearcherMind from "./components/ResearcherMind";
+import StaticFooter from "./components/SaticFooter";
 import StorySection from "./components/StorySection";
 
 const App = () => {
@@ -15,6 +16,7 @@ const App = () => {
       <AchievementsSection/>
       <ResearcherMind/>
       <Credentials/>
+      <StaticFooter/>
       <Footer/>
       
       

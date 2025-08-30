@@ -37,78 +37,79 @@ export default function Credentials() {
         autoAlpha: 0,
       });
     });
-
-    // A master timeline to control the entire pinned sequence
+    const totalScrollDistance = track.current.offsetWidth - window.innerWidth *.5;
     const masterTimeline = gsap.timeline({
-      scrollTrigger: {
-        trigger: component.current,
-        start: "top top",
-        end: () => `+=${amount * window.innerWidth}`, // Extend scroll duration for ending
-        pin: true,
-        scrub: 1,
-      }
-    });
+  scrollTrigger: {
+    trigger: component.current,
+    start: "top top",
+    end: () => `+=${totalScrollDistance}+20`, // total distance in px
+    scrub: 1,
+    pin: true,
+  }
+});
 
-    // Add the horizontal scroll to the master timeline
-    masterTimeline.to(track.current, {
-      xPercent: -100 * (amount - 1),
-      ease: "none",
-    });
-
-    // Add the new ending animation to the master timeline
+// Horizontal scroll in pixels
+masterTimeline.to(track.current, {
+  x: -totalScrollDistance, // move left by total width
+  ease: "none",
+});
+    // Add the ending animation to the master timeline
     masterTimeline.to(component.current, {
       scale: 0.85,
-      autoAlpha: 0,
+      autoAlpha: 1,
       ease: "power1.in",
-    }, ">-=0.5"); // Start this animation slightly before the scroll ends
+    }, ">-=0.5");
 
     // Animate each item's reveal as it scrolls into view
     items.forEach((item) => {
       const itemTimeline = gsap.timeline({
         scrollTrigger: {
           trigger: item,
-          start: "left center",
-          end: "center center",
+          start: "left center+=200",
+          end: "center center+=200",
           containerAnimation: masterTimeline,
           scrub: 1,
         }
       });
 
-      // Refined sequence for a clearer storytelling flow
       itemTimeline
         .to(item.querySelector(".year-text"), { autoAlpha: 1, y: 0 })
-        .to(item.querySelector(".arrow-path"), { autoAlpha: 1, strokeDashoffset: 0 }, ">-0.2") // Arrow starts drawing after year appears
-        .to(item.querySelector(".credential-card"), { autoAlpha: 1, scale: 1 }, ">-0.3"); // Card appears as arrow finishes
+        .to(item.querySelector(".arrow-path"), { autoAlpha: 1, strokeDashoffset: 0 }, ">-0.2")
+        .to(item.querySelector(".credential-card"), { autoAlpha: 1, scale: 1 }, ">-0.3");
     });
 
   }, { scope: component });
 
   return (
-    // Add extra bottom padding to the parent container if needed, to see the scroll-out effect smoothly
     <div style={{ paddingBottom: "50vh" }}>
       <section ref={component} className="hero text-secondary-foreground relative h-screen overflow-hidden">
         <div ref={track} className="h-full flex relative" style={{ width: `${credentialsData.length * 100}%` }}>
           {credentialsData.map((item, index) => (
             <div key={index} className="story-item w-screen h-screen flex items-center justify-center p-8">
-              <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-8 w-full max-w-7xl">
-                <div className="year-container text-center lg:text-left">
+              <div className="grid grid-cols-1 lg:grid-cols-3 items-center gap-8 w-full max-w-7xl">
+                {/* Column 1: Year */}
+                <div className="year-container justify-self-center lg:justify-self-end">
                   <h2 className="year-text font-black text-8xl md:text-9xl lg:text-[12rem] text-primary opacity-0">
                     {item.year}
                   </h2>
                 </div>
-                <div className="details-container flex items-center justify-center lg:justify-start gap-4">
-                  <Arrow className="arrow-svg w-24 md:w-48 text-border flex-shrink-0" />
-                  <div className="credential-card w-full max-w-md lg:max-w-xl opacity-0">
-                    <Card className="bg-card/80 backdrop-blur-sm border-border/50 shadow-2xl">
-                      <CardHeader>
-                        <p className="text-base font-semibold text-primary">{item.type}</p>
-                        <CardTitle className="text-2xl md:text-3xl">{item.title}</CardTitle>
-                      </CardHeader>
-                      <CardContent>
-                        <p className="text-lg text-muted-foreground">{item.source}</p>
-                      </CardContent>
-                    </Card>
-                  </div>
+
+                {/* Column 2: Centered & Longer Arrow */}
+                <div className="arrow-container hidden lg:flex justify-center">
+                    <Arrow className="arrow-svg w-full max-w-xs text-border flex-shrink-0" />
+                </div>
+                
+                {/* Column 3: Card */}
+                <div className="credential-card w-full max-w-md lg:max-w-xl opacity-0 justify-self-center lg:justify-self-start">
+                  <Card className="bg-card/80 backdrop-blur-sm border-border/50 shadow-2xl">
+                    <CardHeader>
+                      <p className="text-base font-semibold text-primary">{item.type}</p>
+                      <CardTitle className="text-2xl md:text-3xl">{item.title}</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <p className="text-lg text-muted-foreground">{item.source}</p>
+                    </CardContent>
+                  </Card>
                 </div>
               </div>
             </div>
