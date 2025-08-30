@@ -74,6 +74,183 @@ body {
     /* This class is now for structure, not background. */
   }
   
+  /* Add this to your existing CSS file */
+
+.contact-footer {
+  /* Initial state: a small bar at the bottom */
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 50;
+  border-radius: 9999px; /* Pill shape */
+  overflow: hidden;
+}
+
+.contact-footer.active {
+  /* Expanded state: fills the screen */
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 0;
+  transform: translateX(0);
+  background-color: rgba(18, 18, 18, 0.7);
+  backdrop-filter: blur(10px);
+}
+
+.form-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.contact-button {
+  /* Style for the initial button */
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.3);
+}
+
+.contact-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 15px 25px -5px rgba(0, 0, 0, 0.4);
+}
+
+/* Form Styles */
+.form-container {
+  width: 100%;
+  max-width: 500px;
+  padding: 2rem;
+  position: relative;
+}
+
+.close-button {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  padding: 0.5rem;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--foreground);
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+.close-button:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.form-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  text-align: center;
+  color: var(--foreground);
+}
+
+.form-subtitle {
+  text-align: center;
+  color: var(--muted-foreground);
+  margin-bottom: 2rem;
+}
+
+.form-field {
+  margin-bottom: 1.25rem;
+}
+
+.form-field label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: var(--foreground);
+}
+
+.form-field input,
+.form-field textarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  color: var(--foreground);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-field input:focus,
+.form-field textarea:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px color-mix(in oklch, var(--primary) 20%, transparent);
+}
+
+.submit-button {
+  width: 100%;
+  padding: 0.8rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.submit-button:hover {
+  transform: scale(1.02);
+}
+
+/* Initially hide form elements for GSAP */
+.form-element {
+  opacity: 0;
+  visibility: hidden;
+}
+  /* --- UPDATE THESE STYLES --- */
+
+.social-links {
+  /* Changed from flex to fixed positioning */
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 60; /* Sit on top of the backdrop */
+  display: flex;
+  gap: 1.5rem;
+}
+
+.copyright-text {
+  /* Changed from absolute to fixed positioning */
+  position: fixed;
+  bottom: 2rem;
+  left: 2rem;
+  z-index: 60; /* Sit on top of the backdrop */
+  font-size: 0.75rem;
+  color: var(--muted-foreground);
+  opacity: 0.7;
+}
+
+/* New shared animation class */
+.anim-element {
+  opacity: 0;
+  visibility: hidden;
+}
+
+/* --- Keep all your other styles, but you can rename .form-element to .anim-element if you wish, or keep both. This example uses a new class for clarity. --- */
+
+.social-link {
+  color: var(--muted-foreground);
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+.social-link:hover {
+  color: var(--primary);
+  transform: scale(1.1);
+}
+/* ... etc */
   .story-section {
     position: relative;
     width: 100%;

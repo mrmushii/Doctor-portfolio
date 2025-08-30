@@ -5,7 +5,7 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
-import Arrow from '../assets/arrow.svg?react'; 
+import Arrow from '../assets/arrow.svg'; 
 
 gsap.registerPlugin(ScrollTrigger);
 
