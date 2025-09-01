@@ -16,7 +16,7 @@ const achievements = [
     title: "First Step",
     description: "The journey began...",
     size: "lg",
-    imgSrc: "/placeholder-image-1.jpg",
+    imgSrc: "/certificate/1.jpg",
     details:
       "This initial phase was all about exploration. Driven by curiosity, I laid the foundational groundwork for everything that was to come.",
   },
@@ -24,7 +24,7 @@ const achievements = [
     title: "Breakthrough",
     description: "Overcame a big challenge...",
     size: "sm",
-    imgSrc: "/placeholder-image-2.jpg",
+    imgSrc: "/certificate/2.jpg",
     details:
       "Facing the first major obstacle was daunting, but overcoming it marked a significant turning point and boosted my confidence immensely.",
   },
@@ -32,7 +32,7 @@ const achievements = [
     title: "Collaboration",
     description: "Worked with amazing people...",
     size: "md",
-    imgSrc: "/placeholder-image-3.jpg",
+    imgSrc: "/certificate/3.jpg",
     details:
       "True innovation happens together. We combined our efforts to achieve something far greater than any one of us could have alone.",
   },
@@ -40,7 +40,7 @@ const achievements = [
     title: "Recognition",
     description: "Efforts were acknowledged...",
     size: "lg",
-    imgSrc: "/placeholder-image-4.jpg",
+    imgSrc: "/certificate/4.jpg",
     details:
       "Receiving recognition from peers and the wider community was a humbling validation of the hard work and dedication poured into the project.",
   },
@@ -48,7 +48,7 @@ const achievements = [
     title: "New Horizons",
     description: "Exploring advanced concepts...",
     size: "md",
-    imgSrc: "/placeholder-image-5.jpg",
+    imgSrc: "/certificate/5.jpg",
     details:
       "The journey is far from over. With new goals on the horizon, the focus is now on leveraging past experiences to innovate for the future.",
   },
@@ -56,15 +56,39 @@ const achievements = [
     title: "Mentorship",
     description: "Guiding the next generation...",
     size: "sm",
-    imgSrc: "/placeholder-image-2.jpg",
+    imgSrc: "/certificate/6.jpg",
     details:
       "Sharing knowledge and helping others grow is one of the most rewarding parts of the journey. It's about giving back and building a stronger community.",
   },
   {
     title: "Innovation",
     description: "Creating novel solutions...",
+    size: "md",
+    imgSrc: "/certificate/7.jpg",
+    details:
+      "Pushing the boundaries of what's possible by developing new techniques and solutions that solve real-world problems in elegant ways.",
+  },
+  {
+    title: "Innovation",
+    description: "Creating novel solutions...",
     size: "lg",
-    imgSrc: "/placeholder-image-1.jpg",
+    imgSrc: "/certificate/8.jpg",
+    details:
+      "Pushing the boundaries of what's possible by developing new techniques and solutions that solve real-world problems in elegant ways.",
+  },
+  {
+    title: "Innovation",
+    description: "Creating novel solutions...",
+    size: "md",
+    imgSrc: "/certificate/9.jpg",
+    details:
+      "Pushing the boundaries of what's possible by developing new techniques and solutions that solve real-world problems in elegant ways.",
+  },
+  {
+    title: "Innovation",
+    description: "Creating novel solutions...",
+    size: "sm",
+    imgSrc: "/certificate/10.jpg",
     details:
       "Pushing the boundaries of what's possible by developing new techniques and solutions that solve real-world problems in elegant ways.",
   },
@@ -78,27 +102,51 @@ const sizeClasses = {
 
 // Safe positions to avoid overflow
 const cardPositions = [
-  { top: "35%", left: "40%" },
-  { top: "37%", left: "35%" },
-  { top: "34%", left: "40%" },
-  { top: "36%", left: "55%" },
-  { top: "38%", left: "70%" },
-  { top: "32%", left: "35%" },
-  { top: "34%", left: "30%" },
-  { top: "36%", left: "45%" },
-  { top: "38%", left: "60%" },
-  { top: "40%", left: "75%" },
-  { top: "44%", left: "42%" },
-  { top: "46%", left: "28%" },
-  { top: "48%", left: "42%" },
-  { top: "50%", left: "58%" },
-  { top: "52%", left: "72%" },
-  { top: "56%", left: "28%" },
-  { top: "58%", left: "35%" },
-  { top: "60%", left: "50%" },
-  { top: "62%", left: "65%" },
-  { top: "65%", left: "30%" },
+  { top: "10%", left: "20%" },
+  { top: "15%", left: "50%" }, // center
+  { top: "20%", left: "75%" },
+  { top: "25%", left: "35%" },
+  { top: "30%", left: "60%" },
+  { top: "35%", left: "45%" }, // center
+  { top: "40%", left: "25%" },
+  { top: "45%", left: "70%" },
+  { top: "50%", left: "40%" },
+  { top: "55%", left: "55%" }, // center
+  { top: "60%", left: "30%" },
+  { top: "65%", left: "65%" },
+  { top: "70%", left: "50%" }, // center
+  { top: "75%", left: "20%" },
+  { top: "80%", left: "75%" },
+  { top: "85%", left: "45%" }, // center
+  { top: "90%", left: "60%" },
+  { top: "95%", left: "35%" },
+  { top: "100%", left: "55%" }, // center
+  { top: "105%", left: "70%" },
+
+  // Extended positions
+  { top: "110%", left: "25%" },
+  { top: "115%", left: "50%" }, // center
+  { top: "120%", left: "75%" },
+  { top: "125%", left: "40%" },
+  { top: "130%", left: "65%" },
+  { top: "135%", left: "45%" }, // center
+  { top: "140%", left: "30%" },
+  { top: "145%", left: "55%" }, // center
+  { top: "150%", left: "20%" },
+  { top: "155%", left: "70%" },
+  { top: "160%", left: "50%" }, // center
+  { top: "165%", left: "35%" },
+  { top: "170%", left: "60%" },
+  { top: "175%", left: "45%" }, // center
+  { top: "180%", left: "25%" },
+  { top: "185%", left: "75%" },
+  { top: "190%", left: "50%" }, // center
+  { top: "195%", left: "40%" },
+  { top: "200%", left: "55%" }, // center
+  { top: "205%", left: "65%" },
 ];
+
+
 
 
 export default function StoryAnimation() {
@@ -154,28 +202,37 @@ export default function StoryAnimation() {
 
     // Floating + parallax
     cards.forEach((card) => {
-      const speedFactor = 0.2 + Math.random() * 0.5;
+  const speedFactor = 0.2 + Math.random() * 0.5;
 
-      gsap.to(card, {
-        x: "+=" + gsap.utils.random(-15, 15),
-        y: "+=" + gsap.utils.random(-10, 10),
-        rotation: gsap.utils.random(-3, 3),
-        repeat: -1,
-        yoyo: true,
-        duration: gsap.utils.random(2, 4),
-        ease: "sine.inOut",
-      });
+  const cardWidth = card.offsetWidth;
+  const cardHeight = card.offsetHeight;
 
-      gsap.to(card, {
-        y: `+=${100 * speedFactor}`,
-        scrollTrigger: {
-          trigger: component.current,
-          start: "top top",
-          end: "bottom top",
-          scrub: 0.3 * speedFactor,
-        },
-      });
-    });
+  const maxX = (window.innerWidth - cardWidth) / 2 - 20; // padding
+  const maxY = (window.innerHeight - cardHeight) / 2 - 20;
+
+  // Subtle floating effect (within safe range)
+  gsap.to(card, {
+    x: "+=" + gsap.utils.random(-Math.min(15, maxX), Math.min(15, maxX)),
+    y: "+=" + gsap.utils.random(-Math.min(10, maxY), Math.min(10, maxY)),
+    rotation: gsap.utils.random(-3, 3),
+    repeat: -1,
+    yoyo: true,
+    duration: gsap.utils.random(2, 4),
+    ease: "sine.inOut",
+  });
+
+  // Scroll parallax effect (vertical drift only)
+  gsap.to(card, {
+    y: `+=${80 * speedFactor}`, // smoother drift
+    scrollTrigger: {
+      trigger: component.current,
+      start: "top top",
+      end: "bottom top",
+      scrub: 0.3 * speedFactor,
+    },
+  });
+});
+
 
     // Cinematic ending: cards fly outward while fading and shrinking
     tl.to(
@@ -226,7 +283,7 @@ export default function StoryAnimation() {
             {achievements.map((item, index) => (
               <div
                 key={index}
-                className="achievement-card-container absolute cursor-pointer transition-transform duration-300"
+                className="achievement-card-container  absolute cursor-pointer transition-transform duration-300"
                 style={{
                   top: cardPositions[index % cardPositions.length].top,
                   left: cardPositions[index % cardPositions.length].left,
@@ -238,13 +295,15 @@ export default function StoryAnimation() {
                 onClick={() => setSelectedCard(item)}
               >
                 <Card
-                  className={`achievement-card bg-gray-800 text-white shadow-xl shadow-blue-500/20 rounded-xl ${sizeClasses[item.size]}`}
+                  className={`achievement-card border-none backdrop-blur-md bg-transparent w-full h-full
+         text-black shadow-xl  rounded-xl ${sizeClasses[item.size]}`}
                 >
                   <CardHeader>
                     <CardTitle className="text-lg font-semibold">{item.title}</CardTitle>
                   </CardHeader>
-                  <CardContent>
-                    <p className="text-sm text-gray-300">{item.description}</p>
+                  <CardContent className="h-full w-full">
+                    <p className="text-sm text-black-300">{item.description}</p>
+                    <img src={item.imgSrc}  alt="" className=" w-full max-h-60 object-contain rounded-2xl" />
                   </CardContent>
                 </Card>
               </div>
@@ -258,27 +317,27 @@ export default function StoryAnimation() {
   ReactDOM.createPortal(
     <div
       ref={modalRef}
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-md"
+      className="fixed inset-0 z-50 flex items-center justify-center  backdrop-blur-md"
       onClick={handleCloseModal}
     >
       <div
-        className="relative w-11/12 max-w-3xl overflow-hidden rounded-xl bg-gray-900 text-white shadow-2xl"
+        className="relative w-11/12 max-w-3xl overflow-hidden rounded-xl  text-black "
         onClick={(e) => e.stopPropagation()}
       >
         <button
           onClick={handleCloseModal}
-          className="absolute right-4 top-4 z-10 text-gray-400 hover:text-white"
+          className="absolute right-4 top-4 z-10 text-black hover:text-black-600 transition"
         >
           <X size={24} />
         </button>
         <img
           src={selectedCard.imgSrc}
           alt={selectedCard.title}
-          className="h-72 w-full object-cover"
+          className="h-full w-full object-cover rounded-2xl"
         />
         <div className="p-8">
           <h2 className="mb-2 text-3xl font-bold">{selectedCard.title}</h2>
-          <p className="text-lg text-gray-300">{selectedCard.details}</p>
+          <p className="text-lg text-black-300">{selectedCard.details}</p>
         </div>
       </div>
     </div>,
